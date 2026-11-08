@@ -1,5 +1,110 @@
 # @zag-js/color-picker
 
+## 2.0.0-next.4
+
+### Minor Changes
+
+- [#3342](https://github.com/chakra-ui/zag/pull/3342)
+  [`93337b6`](https://github.com/chakra-ui/zag/commit/93337b6913dbaf20040a91b671e4074196bb6b46) Thanks
+  [@github-actions](https://github.com/apps/github-actions)! - - Add a `locale` prop for formatting the channel values
+  announced on the area and sliders. `getChannelValueText` now uses it when no locale is passed.
+
+### Patch Changes
+
+- [#3342](https://github.com/chakra-ui/zag/pull/3342)
+  [`730ea29`](https://github.com/chakra-ui/zag/commit/730ea29dd3fff5005687020bc73d9f75962e2b5c) Thanks
+  [@github-actions](https://github.com/apps/github-actions)! - - Cancel pending focus, scroll and sync frames when the
+  machine stops, and let a newer request replace a pending one.
+
+- [#3342](https://github.com/chakra-ui/zag/pull/3342)
+  [`93337b6`](https://github.com/chakra-ui/zag/commit/93337b6913dbaf20040a91b671e4074196bb6b46) Thanks
+  [@github-actions](https://github.com/apps/github-actions)! - - Fix arrow, page, Home, and End keys on a channel slider
+  throwing when the format doesn't have that channel, like hue in `rgba`.
+
+  - Fix `PageUp` and `PageDown` on a channel slider resetting the value instead of stepping it.
+
+  - Fix vertical channel sliders running top to bottom while their gradient runs bottom to top.
+
+  - Fix `getChannelValueText` throwing for a channel the format doesn't have.
+
+  - Fix a typed color being stored in its own format instead of the picker's.
+
+  - Keep the hue when the color reaches gray, and update the area and sliders when the value changes from outside.
+
+  - Fix `onValueChangeEnd` not firing for keyboard changes on the area and channel sliders, or for swatch clicks.
+
+  - Fix the format select ignoring `defaultFormat`, and showing the first option on mount in Vue.
+
+  - Fix number channel inputs showing spinners in Firefox when server-rendered with Vue.
+
+  - Fix `PageUp` and `PageDown` on the area moving the x channel. They now step the y channel, and `Home` and `End` step
+    the x channel.
+
+  - Add `aria-invalid` to the channel inputs, area thumb, and channel slider thumbs.
+
+  - Add readable labels and value text to the area and channel slider thumbs, like "Hue" and "210°".
+
+  - Add `aria-pressed` to swatch triggers.
+
+  - Add arrow-key stepping to number channel inputs, applied as you press.
+
+- [#3342](https://github.com/chakra-ui/zag/pull/3342)
+  [`12f18ab`](https://github.com/chakra-ui/zag/commit/12f18abeafe47ce181e45ea81552b8400681b1f8) Thanks
+  [@github-actions](https://github.com/apps/github-actions)! - Added filter inputs and "no results" messages to menu and
+  select. You filter the items; the input keeps focus while the arrow keys move the highlight.
+
+  ```tsx
+  // popupType: "dialog" on menu and select
+  <div {...api.getContentProps()}>
+    <input {...api.getInputProps()} />
+    <div {...api.getEmptyProps()}>{items.length === 0 && "No results"}</div>
+    <div {...api.getListProps()}>{/* items */}</div>
+  </div>
+  ```
+
+  - `getEmptyProps()` is a polite live region, so keep it rendered and toggle its text. Combobox and listbox have it
+    too.
+  - **Breaking:** Select, combobox, listbox and cascade select now set the highlight with `setHighlightedValue`, like
+    menu. Pass `null` to clear it.
+
+    ```diff
+    - api.setHighlightValue("react") // select, combobox, cascade select
+    - api.highlightValue("react") // listbox
+    + api.setHighlightedValue("react")
+
+    - api.clearHighlightValue()
+    + api.setHighlightedValue(null)
+    ```
+
+  - **Menu**
+    - **Breaking:** Replaced `composite` with `popupType: "menu" | "dialog"` (default `"menu"`), matching select and
+      combobox. Migrate `composite: false` to `popupType: "dialog"`.
+    - `autoHighlight` highlights the first item as the query changes. A submenu can have its own input; `Escape`,
+      `Shift+Tab` or `ArrowLeft` on an empty input returns to the parent's.
+    - `onHighlightChange` reports a `reason` (`keyboard`, `pointer` or `programmatic`), and `setHighlightedValue`
+      accepts `null`.
+  - **Select**
+    - `Home` and `End` jump to the first or last item when the input is empty, and `Shift+Tab` closes the select. A
+      dialog popup opens below the trigger.
+    - `alignItemWithTrigger` keeps the selected item of a long or wrapping list next to the trigger.
+  - Fixed issue where a lazily mounted popup inside nested dialogs rendered behind the dialog.
+
+- Updated dependencies [[`ad5d7a4`](https://github.com/chakra-ui/zag/commit/ad5d7a478c61d97db29213365c57428ef4c2787d),
+  [`cb8e73d`](https://github.com/chakra-ui/zag/commit/cb8e73dce228eb9eafb768e3e744fe35e9dac7f9),
+  [`a80b307`](https://github.com/chakra-ui/zag/commit/a80b307d3d81c1b1ee22cd1049343dbc2f877633),
+  [`c8ae9b4`](https://github.com/chakra-ui/zag/commit/c8ae9b4bc86bc2c0c3d8445fc2378df9cfb003f1),
+  [`3527451`](https://github.com/chakra-ui/zag/commit/3527451f2717ac7ec851e1845ea94cdfc508cb2e),
+  [`601907c`](https://github.com/chakra-ui/zag/commit/601907c870f000539220d5fbe287b1e4b55482f7),
+  [`f984da6`](https://github.com/chakra-ui/zag/commit/f984da6fca728f76742c7f85fdd45e28e82d4fff)]:
+  - @zag-js/dismissable@2.0.0-next.4
+  - @zag-js/dom-query@2.0.0-next.4
+  - @zag-js/core@2.0.0-next.4
+  - @zag-js/popper@2.0.0-next.4
+  - @zag-js/anatomy@2.0.0-next.4
+  - @zag-js/types@2.0.0-next.4
+  - @zag-js/color-utils@2.0.0-next.4
+  - @zag-js/utils@2.0.0-next.4
+
 ## 2.0.0-next.3
 
 ### Patch Changes

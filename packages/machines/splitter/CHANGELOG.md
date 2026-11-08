@@ -1,5 +1,55 @@
 # @zag-js/splitter
 
+## 2.0.0-next.4
+
+### Minor Changes
+
+- [#3342](https://github.com/chakra-ui/zag/pull/3342)
+  [`392e8d7`](https://github.com/chakra-ui/zag/commit/392e8d73f49c7576d275ea5e10b4b1e811a2f8a2) Thanks
+  [@github-actions](https://github.com/apps/github-actions)! - - Add `collapsedThreshold` to panels. A drag now opens a
+  collapsed panel halfway to `minSize` by default, not all the way.
+
+  - Add `disabled` to the splitter and to panels.
+
+  - Accept units in `resizePanel`, such as `"200px"`.
+
+### Patch Changes
+
+- [#3342](https://github.com/chakra-ui/zag/pull/3342)
+  [`11aff26`](https://github.com/chakra-ui/zag/commit/11aff26e7486ff98e68ad8650d75984eff8b29e0) Thanks
+  [@github-actions](https://github.com/apps/github-actions)! - - Fix handles with a one-sided id, such as `"left:"`, not
+  resizing.
+
+  - Fix handles breaking when a panel id contains `:`, as React's `useId` ids do.
+
+  - Fix dragging in RTL moving the handle the wrong way.
+
+  - Fix the handle lagging the pointer next to other handles or fixed-size content.
+
+  - Fix `Enter` collapsing from the starting size instead of the current one.
+
+  - Fix expanding not restoring the size from before the collapse.
+
+  - Fix `aria-valuenow` dropping below `aria-valuemin` when collapsed.
+
+  - Fix pixel limits not letting go when the group grows back.
+
+  - Fix hiding and showing a panel resetting the layout.
+
+  - Fix disabled handles missing `aria-disabled` and being reachable with `F6`.
+
+  - Add double-click on a handle to reset the panel before it.
+
+- Updated dependencies [[`a80b307`](https://github.com/chakra-ui/zag/commit/a80b307d3d81c1b1ee22cd1049343dbc2f877633),
+  [`c8ae9b4`](https://github.com/chakra-ui/zag/commit/c8ae9b4bc86bc2c0c3d8445fc2378df9cfb003f1),
+  [`601907c`](https://github.com/chakra-ui/zag/commit/601907c870f000539220d5fbe287b1e4b55482f7),
+  [`f984da6`](https://github.com/chakra-ui/zag/commit/f984da6fca728f76742c7f85fdd45e28e82d4fff)]:
+  - @zag-js/dom-query@2.0.0-next.4
+  - @zag-js/core@2.0.0-next.4
+  - @zag-js/anatomy@2.0.0-next.4
+  - @zag-js/types@2.0.0-next.4
+  - @zag-js/utils@2.0.0-next.4
+
 ## 2.0.0-next.3
 
 ### Patch Changes

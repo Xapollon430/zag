@@ -1,5 +1,19 @@
 # @zag-js/vue
 
+## 2.0.0-next.4
+
+### Patch Changes
+
+- [#3342](https://github.com/chakra-ui/zag/pull/3342)
+  [`1aaab46`](https://github.com/chakra-ui/zag/commit/1aaab461627fc2a6ecd64e523327a0161c976b15) Thanks
+  [@github-actions](https://github.com/apps/github-actions)! - - Fix vendor-prefixed styles like `WebkitUserSelect` and
+  `WebkitTouchCallout` being dropped from server-rendered markup.
+- Updated dependencies []:
+  - @zag-js/core@2.0.0-next.4
+  - @zag-js/store@2.0.0-next.4
+  - @zag-js/types@2.0.0-next.4
+  - @zag-js/utils@2.0.0-next.4
+
 ## 2.0.0-next.3
 
 ## 1.47.0
